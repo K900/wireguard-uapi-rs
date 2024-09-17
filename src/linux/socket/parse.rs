@@ -151,7 +151,7 @@ pub fn parse_peer_builder(
                 peer_builder.protocol_version(parse_nla_u32(attr.nla_payload.as_ref())?);
             }
             WgPeerAttribute::UnrecognizedConst(i) => {
-                return Err(ParseDeviceError::UnknownPeerAttributeError { id: i })
+                // Do nothing
             }
         }
     }
