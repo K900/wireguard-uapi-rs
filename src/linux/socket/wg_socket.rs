@@ -29,9 +29,13 @@ pub struct WgSocket {
 
 impl WgSocket {
     pub fn connect() -> Result<Self, ConnectError> {
+        Self::connect_with_family(WG_GENL_NAME)
+    }
+
+    pub fn connect_with_family(family: &str) -> Result<Self, ConnectError> {
         let family_id = {
             NlSocketHandle::new(NlFamily::Generic)?
-                .resolve_genl_family(WG_GENL_NAME)
+                .resolve_genl_family(family)
                 .map_err(ConnectError::ResolveFamilyError)?
         };
 
