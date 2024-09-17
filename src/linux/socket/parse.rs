@@ -52,7 +52,7 @@ impl TryFrom<AttrHandle<'_, WgDeviceAttribute>> for Device {
                     // This attribute is for set_device. Ignore it for get_device.
                 }
                 WgDeviceAttribute::UnrecognizedConst(i) => {
-                    return Err(ParseDeviceError::UnknownDeviceAttributeError { id: i })
+                    // Do nothing
                 }
             }
         }
